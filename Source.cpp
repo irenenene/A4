@@ -8,7 +8,7 @@
 using namespace std;
 
 int main (int argc, char **argv) {
-  Queue<Student> *intQueue;
+  /*Queue<Student> *intQueue;
   intQueue = new Queue<Student>();
   Student bob(10);
   Student alice(20);
@@ -17,5 +17,5 @@ int main (int argc, char **argv) {
   intQueue->insert(alice);
   intQueue->printList();
   cout << *intQueue->peek();
-  delete intQueue;
+  delete intQueue;*/
 }
