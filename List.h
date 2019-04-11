@@ -9,15 +9,16 @@ class LinkedList;
 
 template <class T>
 class Node {
-  friend class LinkedList<T>;
-private:
-  T *data;
+  //friend class LinkedList<T>;
+  //friend class Queue<T>;
+public:
+  Node();
+  Node(T d);
+  ~Node();
+//private:
+  T data;
   Node *prev;
   Node *next;
-
-  Node();
-  Node(T *d);
-  ~Node();
 };
 
 template <class T>
@@ -28,15 +29,12 @@ public:
   bool isEmpty();
   unsigned int getSize();
 
-  //search, insert, and delete
-  Node<T>* find(T* value);
-  virtual void insert() = 0;
+  virtual void insert(T d) = 0;
   virtual void deleteNode() = 0;
-//  void printList();
-//  void insertBack(T* d);
-//  void insertAfter(Node* pre);
+  void printList();
+  Node<T>* find(T value);
 
-private:
+protected:
   Node<T> *head;
   Node<T> *tail;
   unsigned int size;
@@ -53,17 +51,19 @@ Node<T>::Node() {
 }
 
 template <class T>
-Node<T>::Node(T *d) {
-  data = d;
+Node<T>::Node(T d) {
+  data = d; // assumes your T uses a copy constructor
   prev = NULL;
   next = NULL;
 }
 
 template <class T>
 Node<T>::~Node() {
+  cout << "start Node dest" << endl;
   prev = NULL;
   next = NULL;
-  data = NULL;
+  //delete data;
+  cout << "Node destructor done" << endl;
 }
 
 /** LinkedList Implementation ***/
@@ -77,22 +77,25 @@ LinkedList<T>::LinkedList() {
 
 template <class T>
 LinkedList<T>::~LinkedList() {
+  cout << "begin ll dest" << endl;
   if (!isEmpty()) {
     Node<T> *curr = head;
 
     while (curr != NULL)
     {
+      cout << "loop" << endl;
         Node<T> *temp = curr;
         curr = curr->next;
         delete temp;
     }
   }
+
+  cout << "end LL dest" << endl;
 }
 
 template <class T>
 bool LinkedList<T>::isEmpty() {
-  return (size > 0);
-  //or check if head is null
+  return (size == 0);
 }
 
 template <class T>
@@ -101,53 +104,28 @@ unsigned int LinkedList<T>::getSize() {
 }
 
 template <class T>
-Node<T>* LinkedList<T>::find(T* value) {
-  Node<T> *current = head;
+Node<T>* LinkedList<T>::find(T value) {
+  if(!isEmpty()) {
+    Node<T> *curr = head;
 
-  while(current != NULL) { //iterate through all nodes until the current is null
-    if (current->data == value) //if data points to same object as value
-      return current;
-
-    current = current->next;
+    while(curr != NULL) {
+      if (curr->data == value)
+        return curr;
+      else
+        curr = curr->next;
+    }
   }
-
-  return current; //will point to null if not found
+  return NULL;
 }
 
-/*
 template <class T>
-void LinkedList<T>::insertFront(T *obj) {
-  Node *newNode = new Node(obj); //create the node to be added
+void LinkedList<T>::printList() {
+  Node<T> *curr = head;
 
-  if (!isEmpty) { //update pointers before making head point to newNode
-    head->prev = newNode;
-    newNode->next = head;
+  while (curr != NULL) {
+    cout << curr->data << endl;
+    curr = curr->next;
   }
-  else
-    tail = newNode;
-
-  head = newNode;
-  size++;
 }
-
-*/
-
-/*
-template <class T>
-void LinkedList<T>::insertBack(T *obj) {
-  Node *newNode = new Node(obj);
-
-  if (!isEmpty) {
-    newNode->prev = tail;
-    tail->next = newNode;
-  }
-  else
-    head = newNode;
-
-  tail = newNode;
-  size++;
-}
-*/
-
 
 #endif
