@@ -2,10 +2,14 @@
 #define SIM_H
 
 #include "Student.h"
+#include "Window.h"
 #include "List.h"
 #include "Queue.h"
+#include "LinkList.h"
 
 #include <iostream>
+#include <fstream>
+#include <string>
 using namespace std;
 
 class Simulation {
@@ -13,7 +17,9 @@ public:
   Simulation();
   ~Simulation();
   Queue<Student> *line;
-  //void Initialize(); //file input
+  LinkList<Window> *windows;
+  LinkList<string> *fileData;
+  void readFromFile(string); //file input, use with stoul?
 
 //private:
   unsigned int totalStudents;

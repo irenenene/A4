@@ -1,6 +1,9 @@
 #include "Student.h"
+#include "Window.h"
 #include "List.h"
 #include "Queue.h"
+#include "LinkList.h"
+#include "Simulation.h"
 
 #include <iostream>
 #include <fstream>
@@ -8,6 +11,9 @@
 using namespace std;
 
 int main (int argc, char **argv) {
+  Simulation sim;
+  sim.readFromFile("testfile");
+  sim.fileData->printList();
   /*Queue<Student> *intQueue;
   intQueue = new Queue<Student>();
   Student bob(10);

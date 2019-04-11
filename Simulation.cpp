@@ -7,12 +7,28 @@ Simulation::Simulation() {
   totalTime = 0;
   currentTime = 0;
   line = new Queue<Student>();
+  windows = new LinkList<Window>();
+  fileData = new LinkList<string>();
 }
 
 Simulation::~Simulation() {
   delete line;
+  delete windows;
+  delete fileData;
 }
 
+void Simulation::readFromFile(string path) {
+  ifstream inputFile;
+  inputFile.open(path);
+
+  if(inputFile.is_open()) {
+    string temp;
+    while(getline(inputFile, temp)) {
+      fileData->insert(temp);
+    }
+    inputFile.close();
+  }
+}
 /*
 Simulation::Initialize(string path) { //CHECK FOR INPUT ERRORS
   ifstream inputFile;

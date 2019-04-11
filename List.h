@@ -4,12 +4,12 @@
 #include <iostream>
 using namespace std;
 
-template <class T>
-class LinkedList;
+//template <class T>
+//class genList;
 
 template <class T>
 class Node {
-  //friend class LinkedList<T>;
+  //friend class genList<T>;
   //friend class Queue<T>;
 public:
   Node();
@@ -22,10 +22,10 @@ public:
 };
 
 template <class T>
-class LinkedList {
+class genList {
 public:
-  LinkedList();
-  virtual ~LinkedList();
+  genList();
+  virtual ~genList();
   bool isEmpty();
   unsigned int getSize();
 
@@ -52,59 +52,52 @@ Node<T>::Node() {
 
 template <class T>
 Node<T>::Node(T d) {
-  data = d; // assumes your T uses a copy constructor
+  data = d; // assumes T d uses a copy constructor
   prev = NULL;
   next = NULL;
 }
 
 template <class T>
 Node<T>::~Node() {
-  cout << "start Node dest" << endl;
   prev = NULL;
   next = NULL;
-  //delete data;
-  cout << "Node destructor done" << endl;
 }
 
-/** LinkedList Implementation ***/
+/** genList Implementation ***/
 
 template <class T>
-LinkedList<T>::LinkedList() {
+genList<T>::genList() {
   head = NULL;
   tail = NULL;
   size = 0;
 }
 
 template <class T>
-LinkedList<T>::~LinkedList() {
-  cout << "begin ll dest" << endl;
+genList<T>::~genList() {
   if (!isEmpty()) {
     Node<T> *curr = head;
 
     while (curr != NULL)
     {
-      cout << "loop" << endl;
         Node<T> *temp = curr;
         curr = curr->next;
         delete temp;
     }
   }
-
-  cout << "end LL dest" << endl;
 }
 
 template <class T>
-bool LinkedList<T>::isEmpty() {
+bool genList<T>::isEmpty() {
   return (size == 0);
 }
 
 template <class T>
-unsigned int LinkedList<T>::getSize() {
+unsigned int genList<T>::getSize() {
   return size;
 }
 
 template <class T>
-Node<T>* LinkedList<T>::find(T value) {
+Node<T>* genList<T>::find(T value) {
   if(!isEmpty()) {
     Node<T> *curr = head;
 
@@ -119,7 +112,7 @@ Node<T>* LinkedList<T>::find(T value) {
 }
 
 template <class T>
-void LinkedList<T>::printList() {
+void genList<T>::printList() {
   Node<T> *curr = head;
 
   while (curr != NULL) {

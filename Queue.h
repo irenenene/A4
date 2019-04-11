@@ -5,7 +5,7 @@
 using namespace std;
 
 template <class T>
-class Queue : public LinkedList<T> {
+class Queue : public genList<T> {
 public:
   Queue();
   ~Queue();
@@ -15,13 +15,13 @@ public:
 };
 
 template <class T>
-Queue<T>::Queue() : LinkedList<T>() {
+Queue<T>::Queue() : genList<T>() {
 
 }
 
 template <class T>
-Queue<T>::~Queue() { // base destructor will be called afterwards automatically
-  cout << "Queue dest" << endl;
+Queue<T>::~Queue() {
+
 }
 
 template <class T>
@@ -37,8 +37,6 @@ void Queue<T>::insert(T d) {
 
   this->tail = newNode;
   this->size++;
-
-  cout << this->size << endl;
 }
 
 template <class T>
