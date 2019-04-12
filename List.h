@@ -27,7 +27,7 @@ public:
   genList();
   virtual ~genList();
   bool isEmpty();
-  unsigned int getSize();
+   int getSize();
 
   virtual void insert(T d) = 0;
   virtual void deleteNode() = 0;
@@ -37,7 +37,7 @@ public:
 //protected:
   Node<T> *head;
   Node<T> *tail;
-  unsigned int size;
+   int size;
 
 };
 
@@ -95,7 +95,7 @@ bool genList<T>::isEmpty() {
 }
 
 template <class T>
-unsigned int genList<T>::getSize() {
+ int genList<T>::getSize() {
   return size;
 }
 

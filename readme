@@ -1,0 +1,22 @@
+Irene Liu
+2313260
+CPSC 350-02
+Assignment 4
+
+to run the file: please have c++ 11, run with ./assignment4 "filename"
+
+known errors:
+
+Does not produce expected output for simulation :(
+
+sort function does not work (also, the current sort() method in LinkedList.cpp is borrowed from https://stackoverflow.com/questions/33203610/how-to-create-a-bubble-sort-for-a-doubly-linked-list-with-a-swap-function for testing purposes)
+
+
+other outside resources:
+https://stackoverflow.com/questions/18598296/create-a-linked-list-using-base-a-class-and-a-derived-class
+https://stackoverflow.com/questions/12895775/class-template-inheritance-c
+https://codereview.stackexchange.com/questions/153106/c-stack-implementation-using-templates-and-linked-list
+https://stackoverflow.com/questions/2837241/c-returning-pointers-references
+https://stackoverflow.com/questions/8919566/are-pure-virtual-methods-allowed-within-a-template-class
+https://stackoverflow.com/questions/6592512/templates-parent-class-member-variables-not-visible-in-inherited-class
+

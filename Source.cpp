@@ -1,3 +1,12 @@
+/*
+Irene Liu
+2313260
+Assignment 4
+CPSC 350-02
+
+
+*/
+
 #include "Student.h"
 #include "Window.h"
 #include "List.h"

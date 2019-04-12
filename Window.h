@@ -13,8 +13,8 @@ public:
   void updateTimer();
 
   bool hasStudent;
-  unsigned int currentIdleTime;
-  unsigned int timeRemaining; //remaining time for current student
+   int currentIdleTime;
+   int timeRemaining; //remaining time for current student
   Student *currentStudent;
   friend ostream &operator<<(ostream& os, const Window& win) {
     if (win.hasStudent)
