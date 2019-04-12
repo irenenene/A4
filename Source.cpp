@@ -7,13 +7,21 @@
 
 #include <iostream>
 #include <fstream>
-
 using namespace std;
 
 int main (int argc, char **argv) {
   Simulation sim;
+/*
+  if(sim.readFromFile("testfile"))
+    sim.fileData.printList();
+    */
+
   sim.readFromFile("testfile");
-  sim.fileData->printList();
+
+  sim.initialize();
+  sim.update();
+  sim.update();
+
   /*Queue<Student> *intQueue;
   intQueue = new Queue<Student>();
   Student bob(10);

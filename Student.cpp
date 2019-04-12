@@ -7,6 +7,12 @@ Student::Student() {
   windowTime = 0;
 }
 
+Student::Student(unsigned int id) {
+  idNumber = id;
+  currentWaitTime = 0;
+  windowTime = 0;
+}
+
 Student::Student(unsigned int id, unsigned int wt) {
   idNumber = id;
   windowTime = wt;
@@ -14,7 +20,7 @@ Student::Student(unsigned int id, unsigned int wt) {
 }
 
 Student::~Student() {
-  cout << "student dest" << endl;
+  //cout << "student dest" << endl;
 }
 
 unsigned int Student::getID() {

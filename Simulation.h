@@ -16,18 +16,25 @@ class Simulation {
 public:
   Simulation();
   ~Simulation();
-  Queue<Student> *line;
-  LinkList<Window> *windows;
-  LinkList<string> *fileData;
-  void readFromFile(string); //file input, use with stoul?
+  Queue<Student> line;
+  LinkList<Window> windows;
+  LinkList<string> fileData;
+  bool readFromFile(string); //file input, use with stoul?
+  void initialize();
+  void update();
+  void lineToWindow();
+  void addToLine();
+  void finishWindow();
+  void updateTimers();
 
 //private:
-  unsigned int totalStudents;
-  unsigned int totalWindows;
-  unsigned int currentWindows;
-  unsigned int totalTime;
-  unsigned int currentTime;
-
+  int totalStudents;
+  int totalWindows;
+  int currentWindows;
+  int totalWaitTime;
+  int currentTime;
+  int nextTime; //next time to add students
+  int listPosition;
 };
 
 #endif

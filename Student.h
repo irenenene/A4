@@ -1,16 +1,17 @@
 #ifndef STUDENT_H
 #define STUDENT_H
 #include <iostream>
-
 using namespace std;
 
 class Student {
 public:
   Student();
+  Student(unsigned int);
   Student(const Student& other) {
     idNumber = other.idNumber;
     currentWaitTime = other.currentWaitTime;
     windowTime = other.windowTime;}
+
   Student(unsigned int id, unsigned int wt);
   ~Student();
   unsigned int getID();

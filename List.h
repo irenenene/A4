@@ -34,7 +34,7 @@ public:
   void printList();
   Node<T>* find(T value);
 
-protected:
+//protected:
   Node<T> *head;
   Node<T> *tail;
   unsigned int size;
@@ -75,6 +75,7 @@ genList<T>::genList() {
 template <class T>
 genList<T>::~genList() {
   if (!isEmpty()) {
+  //  cout << "not empty" << endl;
     Node<T> *curr = head;
 
     while (curr != NULL)
@@ -84,6 +85,8 @@ genList<T>::~genList() {
         delete temp;
     }
   }
+
+//  cout << "List dest" << endl;
 }
 
 template <class T>
