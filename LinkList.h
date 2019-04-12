@@ -13,6 +13,8 @@ public:
   void insertBack(T d);
   void deleteNode(); //deletes from rear
   T* getValue(int index);
+  void sort(); //ascending order
+
 };
 
 template <class T>
@@ -89,6 +91,46 @@ T* LinkList<T>::getValue(int index) {
 
     return &curr->data;
   }
+}
+
+template <class T>
+void LinkList<T>::sort() { //not working as intended
+  Node<T> *curr = this->head;
+  Node<T> *nextNode = NULL;
+  Node<T> *temp = NULL;
+
+  if(this->size <= 1) {
+    //do nothing
+  }
+  else {
+    for (int i = 0; i < this->size-1; i++) {
+      for (int j = 0; j < this->size-i-1; j++) {
+        if(curr->data > curr->next->data) { // if true, then swap
+          nextNode = curr->next;
+          temp = curr->prev;
+          if(temp != NULL) {
+            temp->next = nextNode;
+          }
+          if(nextNode != NULL) {
+            nextNode->next->prev = curr;
+          }
+          curr->next = nextNode->next;
+          curr->prev = nextNode->prev;
+          nextNode->next = curr;
+          nextNode->prev = temp;
+
+          if(j == 0)  {
+            this->head = nextNode;
+          }
+          if(j == this->size-i-2) {
+            this->tail = nextNode->next;
+          }
+        }
+      }
+    }
+  }
+
+
 }
 
 #endif

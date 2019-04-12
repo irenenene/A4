@@ -21,12 +21,12 @@ void Window::openWindow() {
   //if student's windowtime == 0
   //get rid of student
   if(hasStudent) {
-    if (currentStudent->windowTime == 0) {
+    if (currentStudent->windowTime <= 0) {
       hasStudent = false;
       delete currentStudent;
       currentStudent = NULL;
 
-      currentIdleTime = 0;
+      //currentIdleTime = 0;
     }
   }
 }

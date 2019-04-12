@@ -11,25 +11,19 @@ using namespace std;
 
 int main (int argc, char **argv) {
   Simulation sim;
-/*
-  if(sim.readFromFile("testfile"))
-    sim.fileData.printList();
-    */
-
-  sim.readFromFile("testfile");
+  string file = argv[1];
+  sim.readFromFile(file);
 
   sim.initialize();
-  sim.update();
-  sim.update();
+  while( (!sim.line.isEmpty()) || (sim.listPosition < sim.fileData.getSize()) || !sim.allEmpty())
+  {
+    sim.update();
+  }
+/*
+  sim.idleTimes.sort();
+  sim.waitTimes.sort();*/
 
-  /*Queue<Student> *intQueue;
-  intQueue = new Queue<Student>();
-  Student bob(10);
-  Student alice(20);
+  sim.printResults();
 
-  intQueue->insert(bob);
-  intQueue->insert(alice);
-  intQueue->printList();
-  cout << *intQueue->peek();
-  delete intQueue;*/
+  return 0;
 }
